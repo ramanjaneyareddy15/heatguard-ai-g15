@@ -1,5 +1,9 @@
 # CHANGELOG — HeatGuard AI
 
+## 2.0.3 — 26 November 2026
+- Updated the submission documentation with the team-provided YouTube demonstration reel link.
+- Kept the reel reference without listing its duration.
+
 ## 2.0.2 — 26 November 2026
 - Added the team-provided YouTube demonstration reel link to the README and submission checklist.
 - Reel duration and anonymous playback access remain to be confirmed.
