@@ -1,19 +1,26 @@
-# Code version audit – 26 November 2026
+# Code version audit — 26 November 2026
 
-## Findings
-1. The public repository contains the Python backend, generator, browser UI and supporting files.
-2. The backend uses Python rule-based mock output. `/api/generate` fills Baseline or Structured prompt templates and returns `is_mock: true`; it does not call a language model.
-3. `/api/review` applies limited heuristics and is not semantic hallucination detection.
-4. The browser UI exposes Baseline and Structured modes. V1/V2/V3 are prompt-design references, not runtime model calls.
-5. The local corrected package adds report, diagrams, test-plan and supporting-document files.
+## Current implementation
+1. The repository contains the Python backend, rule-based generator, browser UI, prompt templates, synthetic data, tests, diagrams and project documentation.
+2. The browser interface exposes exactly two prompt-selector options: Baseline and Structured.
+3. The backend accepts only `baseline` and `structured` in `POST /api/generate`.
+4. The generator returns rule-based mock output and marks it `is_mock: true`; no live LLM call is made.
+5. The reviewer uses limited heuristics and is not semantic hallucination detection.
+6. No live-weather API is integrated.
+7. P1 Advisory Generation, P2 Audience Adaptation and P3 Output Review are documented as workflow tasks, not as three prompt-selector options.
 
-## Version 2.0.0
-- Added `/health` for Render health checks.
-- Added `/api/version` to report version and explicitly show model/weather integrations as disabled.
-- Updated Render to install requirements and check `/health`.
+## Version 2.0.1 documentation alignment
+- Removed the obsolete third prompt-version artifact.
+- Removed the third-version experiment-log rows.
+- Aligned project documentation, prompt sheets, diagrams, rubric and submission checklist with the two-option interface.
+
+## Version 2.0.0 runtime
+- Added `/health` for service health reporting.
+- Added `/api/version` for application version and integration-status reporting.
+- Updated Render deployment configuration.
 
 ## Verification scope
-The local smoke test checked the homepage, health, version, sample cases and generation endpoint. It returned HTTP 200 and `is_mock: true`. This does not prove model inference, factual correctness, advisory quality or completion of AI prompt experiments.
+The previous local smoke test checked the homepage, health, version, sample cases and generation endpoint. It returned HTTP 200 and `is_mock: true`. This does not establish model inference, factual correctness, advisory quality or completion of every required model experiment.
 
 ## Deployment
-A GitHub commit does not prove that Render has deployed it. Verify the latest deployment commit, build logs, service status and live `/health` endpoint.
+Render previously reported the v2.0.0 deployment as Live from commit `eb989214`. The documentation-alignment commit must complete a new Render deployment before the live site can be called updated.
