@@ -1,5 +1,9 @@
 # CHANGELOG — HeatGuard AI
 
+## 2.0.2 — 26 November 2026
+- Added the team-provided YouTube demonstration reel link to the README and submission checklist.
+- Reel duration and anonymous playback access remain to be confirmed.
+
 ## 2.0.1 — Two-option documentation alignment
 - Standardized the project on the two prompt options shown and accepted by the application: Baseline and Structured.
 - Removed the obsolete third prompt-version artifact and its experiment-log entries.
