@@ -1,33 +1,44 @@
-# HeatGuard AI – Milestone 2 Working Package (G15)
+# HeatGuard AI – Prompt-Based Heat-Wave Public-Health Advisory Generator
 
-**Status: WORKING DRAFT – NOT READY TO SUBMIT.** This package consolidates the supplied offline prototype, prompt versions, prompt sheets, synthetic test plan, experiment observations and draft documentation.
+**Team:** NovaNex | **Team ID:** PE-B01-44 | **Batch:** B01-B12  
+**Faculty:** Sonal Kukreja
 
-## Project scope
-HeatGuard AI drafts heat-wave public-health advisories from forecast information supplied by a user. It has three prompt workflows: (1) advisory generation, (2) audience adaptation, and (3) output review. It must not invent forecast facts, conceal uncertainty, present drafts as official warnings, or replace official local guidance.
+## Project overview
+HeatGuard AI is a browser-based prototype for drafting heat-wave public-health advisories from forecast information supplied by a user. It accepts a forecast, optional location/period/warning level, audience, language and word limit. It displays a filled prompt and a clearly labelled rule-based mock advisory.
 
-## Important prototype distinction
-The included `backend.py`, `heatguard.py` and `static/index.html` are an offline prototype. Their generated advisory is rule-based mock output, not Gemini output. The Gemini experiments were run separately in Google AI Studio. Do not describe the local backend as Gemini-integrated.
+## Actual implementation
+- Python backend: `backend.py`; browser interface: `static/index.html`.
+- `/api/generate` fills Baseline or Structured prompt templates and calls `heatguard.mock_output()`.
+- The response marks the output as `is_mock: true`. It is not an LLM response.
+- `/api/review` performs limited heuristic checks (numeric strings, section labels, word count, official-guidance mention and missing-input acknowledgement). It is not semantic hallucination detection.
+- The current UI exposes Baseline and Structured prompt modes. V1/V2/V3 files are reference/design iterations, not runtime model calls.
+- No Gemini/LLM API or live-weather API is integrated in this code.
 
-## Run the local prototype
-From this folder: `python backend.py`, then open `http://127.0.0.1:8000`. This demonstrates the offline prompt-building/mock-review interface only.
+## Version 2.0.0
+- Added `GET /health` for Render health checks.
+- Added `GET /api/version` to report app version and integration status.
+- Updated Render build and health-check configuration.
 
-## Folder structure
-- `prompts/v1`, `prompts/v2`, `prompts/v3`: recovered prompt versions (V1/V2 reconstructed from screenshots/conversation; verify against originals).
-- `prompts/final`: three prompt sheets/templates.
-- `test-data`: 10 synthetic cases and execution tracker.
-- `tests`: rubric and nine qualitative run notes.
-- `docs/diagrams`: four Mermaid diagrams.
-- `report`: seven-section Milestone 2 report draft.
-- `supporting-document`: technical report draft.
+## Run locally
+```bash
+python backend.py
+```
+Open `http://127.0.0.1:8000`. Render uses the `PORT` environment variable.
+
+## Main files
+- `backend.py` – HTTP server, JSON API, health and version endpoints.
+- `heatguard.py` – sample-case loading, prompt filling and rule-based mock generation.
+- `static/index.html` – browser interface.
+- `prompts/` – runtime templates and prompt-design iterations.
+- `test-data/`, `tests/` – synthetic cases, test tracker and rubric.
+- `docs/diagrams/` – design diagrams.
+- `report/`, `supporting-document/` – Milestone 2 draft documents.
+
+## Verification
+The local v2.0.0 server was checked for `/`, `/health`, `/api/version`, `/api/cases` and `/api/generate`; these returned HTTP 200 in the local smoke test. Generation returned `is_mock: true`. This does not establish model inference, factual accuracy, or semantic quality.
+
+Repository: https://github.com/ramanjaneyareddy15/heatguard-ai-g15  
+Render URL: https://heatguard-ai-g15.onrender.com
 
 ## Before submission
-1. Confirm team name, Team ID, batch, faculty guide, members/enrollment numbers and contribution percentages.
-2. Confirm exact Gemini model name and settings from AI Studio.
-3. Execute at least 10 test inputs (including at least 3 edge/invalid cases), save actual outputs, complete expected/actual/pass-fail table and numeric rubric scores.
-4. Add 2–3 genuine AI Studio run screenshots with test numbers.
-5. Verify V1/V2 exact text and add the full V1/V2/V3 iteration log.
-6. Add real prototype/repository/reel links and test them in incognito.
-7. Record 90–150 second reel.
-8. Obtain team agreement and confirm faculty late-submission permission.
-
-No test outputs, scores, team details, links, faculty approval or video have been fabricated in this package.
+Confirm all report details and team contributions, add genuine screenshots, execute and score the required model tests if required, and verify Render's latest deployment and live health endpoint. Never claim LLM integration or completed tests without evidence.
