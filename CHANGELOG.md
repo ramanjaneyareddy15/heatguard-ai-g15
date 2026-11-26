@@ -1,6 +1,13 @@
-# CHANGELOG – HeatGuard AI
+# CHANGELOG — HeatGuard AI
 
-## 2.0.0 – 26 November 2026
+## 2.0.1 — Two-option documentation alignment
+- Standardized the project on the two prompt options shown and accepted by the application: Baseline and Structured.
+- Removed the obsolete third prompt-version artifact and its experiment-log entries.
+- Updated the README, project report, supporting report, deployment notes, workflow diagrams, rubric and submission checklist.
+- Clarified that P1 Advisory Generation, P2 Audience Adaptation and P3 Output Review are workflow tasks, not prompt-selector options.
+- Reconfirmed that the runtime generator is rule-based mock output and review is heuristic.
+
+## 2.0.0 — 26 November 2026
 - Added `/health` and `/api/version` endpoints.
 - Updated Render build and health-check configuration.
 - Clarified that the runtime generator is rule-based mock output and the reviewer is heuristic.
