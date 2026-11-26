@@ -1,8 +1,9 @@
 flowchart LR
  A[Forecast text] --> V[Input fields and validation]
- L[Location/date/temp/warning if supplied] --> V
+ L[Location/period/warning if supplied] --> V
  U[Audience/language/word limit] --> V
- V --> P[Prompt template + V3 system instructions]
- P --> M[Gemini response]
- M --> O[Structured advisory or review]
+ V --> P[Select Baseline or Structured template]
+ P --> B[Backend prepares filled prompt]
+ B --> M[Rule-based mock output]
+ M --> O[Advisory draft and heuristic review]
  O --> H[Human verification]
