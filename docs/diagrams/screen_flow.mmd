@@ -1,8 +1,6 @@
 flowchart TD
- A[Open Google AI Studio Playground] --> B[Load HeatGuard system instructions]
- B --> C[Choose task: Generate / Adapt / Review]
- C --> D[Paste synthetic or supplied input]
- D --> E[Run Gemini]
- E --> F[Inspect output and uncertainty]
- F --> G[Save output and screenshot]
- G --> H[Human evaluator records rubric scores]
+ A[Open HeatGuard AI web interface] --> B[Enter forecast and optional metadata]
+ B --> C[Choose Baseline or Structured]
+ C --> D[Generate rule-based draft]
+ D --> E[Inspect filled prompt and heuristic review]
+ E --> F[Human verifies source facts and official guidance]
