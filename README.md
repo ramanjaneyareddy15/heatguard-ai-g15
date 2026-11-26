@@ -48,5 +48,7 @@ Open `http://127.0.0.1:8000`. Render supplies the `PORT` environment variable.
 The generator returns rule-based mock text, not an LLM response. It does not fetch live weather. Automatic review is heuristic and cannot guarantee factual correctness or reliably detect semantic hallucinations or contradictions. Sample cases are synthetic. Outputs are drafts, not official warnings or medical advice. A responsible person must verify every draft against the source forecast and official local guidance before distribution.
 
 ## Project links
-Repository: https://github.com/ramanjaneyareddy15/heatguard-ai-g15  
-Live prototype: https://heatguard-ai-g15.onrender.com
+- Repository: https://github.com/ramanjaneyareddy15/heatguard-ai-g15
+- Live prototype: https://heatguard-ai-g15.onrender.com
+- Demonstration reel (YouTube): https://youtu.be/j9HeEwSLZ34
+- Reel duration: to be confirmed from the uploaded video.
