@@ -51,4 +51,3 @@ The generator returns rule-based mock text, not an LLM response. It does not fet
 - Repository: https://github.com/ramanjaneyareddy15/heatguard-ai-g15
 - Live prototype: https://heatguard-ai-g15.onrender.com
 - Demonstration reel (YouTube): https://youtu.be/j9HeEwSLZ34
-- Reel duration: to be confirmed from the uploaded video.
