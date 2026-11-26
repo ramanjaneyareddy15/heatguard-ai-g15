@@ -5,7 +5,7 @@
 - [x] Project documentation describes exactly those two selectable prompt options.
 - [x] P1 Advisory Generation, P2 Audience Adaptation and P3 Output Review are workflow tasks, not selector options.
 - [x] Runtime limitations are stated accurately: rule-based mock generation, no live LLM, no live weather API, heuristic review.
-- [ ] Verify latest GitHub commit is deployed on Render.
+- [x] Verify latest GitHub commit is deployed on Render. Confirmed LIVE on 2026-11-26 (commit f312a76).
 - [ ] Test Baseline and Structured generation on the live site after deployment.
 - [ ] Check live `/health` and `/api/version` routes.
 
