@@ -1,0 +1,12 @@
+flowchart TD
+ A[User supplies forecast and audience] --> B[Validate required input]
+ B --> C[Select prompt function]
+ C --> D1[P1 Advisory Generation]
+ C --> D2[P2 Audience Adaptation]
+ C --> D3[P3 Output Review]
+ D1 --> E[Gemini in Google AI Studio]
+ D2 --> E
+ D3 --> E
+ E --> F[Draft output]
+ F --> G[Human review against supplied forecast]
+ G --> H[Use official local guidance before public distribution]
