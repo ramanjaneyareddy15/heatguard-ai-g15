@@ -14,8 +14,8 @@
 2. Execute the required distinct test inputs and save actual outputs.
 3. Score executed outputs using the evaluation rubric; do not invent scores.
 4. Add genuine screenshots of actual runs.
-5. Verify shared prototype and repository links in a private browser.
-6. Record and upload the required presentation/reel if applicable.
+5. [x] Verify shared prototype and repository links in a private browser. User confirmed both open in Incognito without signing in (2026-11-26).
+6. [ ] Record and upload the required presentation/reel if applicable (90–150 seconds); add the share link and exact duration.
 7. Confirm contribution percentages total 100% and are approved by all members.
 8. Export final report and supporting-document PDFs and check file size/format.
 9. Confirm form counts match actual submitted prompt sheets and executed tests.
