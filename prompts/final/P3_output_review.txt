@@ -1,0 +1,15 @@
+PROMPT ID: P3 – Output Review
+Workflow step: Review a generated advisory against its original forecast.
+Purpose: Identify unsupported claims, omissions, hidden uncertainty and unsafe framing.
+Tool/model: Google AI Studio – Gemini (exact model/version to be recorded).
+Settings: Record actual settings; otherwise state default.
+System prompt: See prompts/v3/system_instructions_v3.txt
+User template:
+Original forecast: {forecast_text}
+Generated advisory: {advisory_text}
+Review for invented/unsupported claims, changes or omissions of forecast facts, missing/uncertain information, unsupported audience assumptions and responsible communication. Recommend corrections.
+Output: Overall Review; Unsupported Claims; Missing or Uncertain Information; Recommended Corrections; Final Verdict (Accept/Revise/Reject) with justification.
+Variables: forecast_text is the source; advisory_text is the candidate being reviewed.
+Examples included: 0 (zero-shot template).
+Output format: Five named sections.
+Sample run: Use TEST-10 and paste actual Gemini input/output pair; pending evidence insertion.

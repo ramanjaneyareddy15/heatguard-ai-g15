@@ -1,0 +1,21 @@
+PROMPT ID: P1 – Advisory Generation
+Workflow step: Generate an advisory from supplied forecast data.
+Purpose: Produce a concise, source-grounded draft advisory.
+Tool/model: Google AI Studio – Gemini (exact model/version to be copied from the user's run settings before submission).
+Settings: Record actual settings; otherwise state default.
+System prompt: See prompts/v3/system_instructions_v3.txt
+User template:
+Generate a heat-wave public-health advisory using the information below.
+Forecast: {forecast_text}
+Location: {location_or_not_provided}
+Date/period: {date_or_period_or_not_provided}
+Temperature: {temperature_or_not_provided}
+Official warning level: {warning_level_or_not_provided}
+Audience: {audience}
+Language: {language}
+Maximum words: {max_words}
+Use only supplied facts. Separate forecast facts from general precautions. Identify missing information. Output: Headline; Main Advisory; Practical Precautions; Missing or Uncertain Information.
+Variables: fields in braces contain user-supplied forecast/audience/output constraints.
+Examples included: 0 (zero-shot template).
+Output format: Four named sections.
+Sample run: Use TEST-01 and paste the actual Gemini input/output pair; pending evidence insertion.

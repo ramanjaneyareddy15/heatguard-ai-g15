@@ -1,0 +1,11 @@
+test_id,type,executed_in_ai_studio,actual_output_saved,rubric_scores_entered,pass_fail,evidence_file,status
+TC-01,Normal,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-02,Normal,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-03,Normal,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-04,Normal,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-05,Normal,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-06,Normal,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-07,Edge,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-08,Edge,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-09,Edge,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
+TC-10,Invalid,No – pending,No,No,Pending,Pending,NOT YET EXECUTED
