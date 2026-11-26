@@ -1,9 +1,7 @@
-PROMPT ID: P2 – Audience Adaptation
-Workflow step: Adapt a factually grounded advisory for a specified audience.
+PROMPT ID: P2 — Audience Adaptation
+Workflow task: Adapt a factually grounded advisory for a specified audience.
 Purpose: Change wording and practical examples without changing forecast facts.
-Tool/model: Google AI Studio – Gemini (exact model/version to be recorded).
-Settings: Record actual settings; otherwise state default.
-System prompt: See prompts/v3/system_instructions_v3.txt
+Implementation note: This prompt sheet documents the task design. The deployed Python prototype does not call an external LLM.
 User template:
 Adapt this heat-safety advisory for {audience}.
 Original forecast: {forecast_text}
@@ -13,6 +11,3 @@ Maximum words: {max_words}
 Preserve every forecast fact. Do not assume missing details or invent warning levels, dates, locations or temperatures. Include relevant audience-specific general precautions. Explicitly identify missing information.
 Output: Headline; Audience-specific Advisory; Recommended Precautions; Missing or Uncertain Information.
 Variables: audience, forecast_text, advisory_text, language and max_words are supplied by the user.
-Examples included: 0 (zero-shot template).
-Output format: Four named sections.
-Sample run: Use TEST-04 and paste the actual Gemini input/output pair; pending evidence insertion.
