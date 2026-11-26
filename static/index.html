@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HeatGuard AI</title>
+<style>
+  :root {
+    --bg: #fbf7f2; --card: #ffffff; --ink: #2a2420; --muted: #6f655d;
+    --line: #e6dcd1; --accent: #c2410c; --accent-ink: #ffffff;
+    --ok: #166534; --ok-bg: #e7f5ec; --warn: #92400e; --warn-bg: #fdf0dc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1714; --card: #26211d; --ink: #f1e9e1; --muted: #a79b90;
+      --line: #3a322c; --accent: #f97316; --accent-ink: #1b1714;
+      --ok: #86efac; --ok-bg: #16301f; --warn: #fcd34d; --warn-bg: #3a2c12;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 28px 20px 8px; max-width: 1080px; margin: 0 auto; }
+  h1 { margin: 0; font-size: 1.6rem; letter-spacing: -0.01em; }
+  h1 span { color: var(--accent); }
+  .sub { color: var(--muted); margin: 4px 0 0; }
+  .banner { max-width: 1080px; margin: 14px auto 0; padding: 10px 14px;
+    background: var(--warn-bg); color: var(--warn); border-radius: 8px; font-size: .9rem; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 16px 20px 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 820px) { .wrap { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  h2 { margin: 0 0 12px; font-size: 1.05rem; }
+  label { display: block; font-size: .85rem; color: var(--muted); margin: 12px 0 4px; }
+  input, select, textarea { width: 100%; padding: 9px 10px; border: 1px solid var(--line);
+    border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; }
+  textarea { resize: vertical; min-height: 90px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .seg { display: flex; gap: 8px; margin-top: 4px; }
+  .seg label { margin: 0; flex: 1; display: flex; align-items: center; gap: 6px;
+    padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); cursor: pointer; }
+  .seg input { width: auto; }
+  button { font: inherit; cursor: pointer; border-radius: 8px; padding: 10px 16px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  button:disabled { opacity: .6; cursor: default; }
+  .actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  pre { white-space: pre-wrap; word-wrap: break-word; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 8px; padding: 12px; margin: 0; font: .88rem/1.5 ui-monospace, Menlo, Consolas, monospace; }
+  .out-head { display: flex; justify-content: space-between; align-items: center; margin: 14px 0 6px; }
+  .out-head h3 { margin: 0; font-size: .95rem; }
+  .small { padding: 4px 10px; font-size: .8rem; }
+  .tag { font-size: .75rem; padding: 2px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); }
+  .findings { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+  .findings li { padding: 8px 10px; border-radius: 8px; font-size: .9rem; }
+  .findings .ok { background: var(--ok-bg); color: var(--ok); }
+  .findings .warn { background: var(--warn-bg); color: var(--warn); }
+  .err { color: var(--warn); margin-top: 10px; font-size: .9rem; }
+  .hint { color: var(--muted); font-size: .85rem; margin: 6px 0 0; }
+  .empty { color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Heat<span>Guard</span> AI</h1>
+  <p class="sub">Prompt-based heat-wave public-health advisory drafts</p>
+</header>
+<div class="banner">Draft tool for prompt testing. Sample cases are synthetic, not real forecasts. Output is not an official warning or medical advice. A person must review it, and official local guidance applies.</div>
+
+<main class="wrap">
+  <section class="card">
+    <h2>Input</h2>
+    <label for="case">Sample case (synthetic)</label>
+    <select id="case"><option value="">Custom input</option></select>
+
+    <label for="forecast">Forecast text</label>
+    <textarea id="forecast" placeholder="Paste the supplied forecast or warning text"></textarea>
+
+    <div class="row">
+      <div><label for="location">Location (optional)</label><input id="location"></div>
+      <div><label for="period">Forecast period (optional)</label><input id="period"></div>
+    </div>
+    <div class="row">
+      <div><label for="level">Warning level (optional)</label><input id="level"></div>
+      <div><label for="audience">Audience</label><select id="audience"></select></div>
+    </div>
+    <div class="row">
+      <div><label for="language">Language</label><input id="language" value="English"></div>
+      <div><label for="maxwords">Maximum words</label><input id="maxwords" type="number" min="20" max="500" value="120"></div>
+    </div>
+
+    <label>Prompt version</label>
+    <div class="seg">
+      <label><input type="radio" name="pv" value="baseline" checked> Baseline</label>
+      <label><input type="radio" name="pv" value="structured"> Structured</label>
+    </div>
+    <p class="hint">Missing fields are never guessed. They show up under "Missing/uncertain information".</p>
+
+    <div class="actions">
+      <button class="primary" id="gen">Generate</button>
+      <button id="clear">Clear</button>
+    </div>
+    <div class="err" id="err" role="alert"></div>
+  </section>
+
+  <section class="card">
+    <h2>Result</h2>
+    <div id="result"><p class="empty">Choose a sample case or enter a forecast, then press Generate.</p></div>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let cases = [];
+
+async function api(path, body) {
+  const res = await fetch(path, body ? {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+  } : undefined);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Request failed");
+  return data;
+}
+
+function form() {
+  return {
+    forecast_text: $("forecast").value,
+    location: $("location").value,
+    period: $("period").value,
+    warning_level: $("level").value,
+    audience: $("audience").value,
+    language: $("language").value,
+    max_words: $("maxwords").value,
+    prompt_version: document.querySelector("input[name=pv]:checked").value,
+  };
+}
+
+function fillForm(c) {
+  $("forecast").value = c ? c.forecast_text : "";
+  $("location").value = c && c.location ? c.location : "";
+  $("period").value = c && c.period ? c.period : "";
+  $("level").value = c && c.warning_level ? c.warning_level : "";
+  if (c) $("audience").value = c.audience;
+  $("language").value = c ? c.language : "English";
+  $("maxwords").value = c ? c.max_words : 120;
+}
+
+function esc(s) {
+  return s.replace(/[&<>]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch]));
+}
+
+function findingsHtml(review) {
+  return '<ul class="findings">' +
+    review.findings.map((f) => `<li class="${f.level}">${esc(f.text)}</li>`).join("") +
+    `</ul><p class="hint">${esc(review.note)}</p>`;
+}
+
+function render(data) {
+  $("result").innerHTML = `
+    <div class="out-head"><h3>Advisory draft</h3><span class="tag">Rule-based mock, not a model result</span></div>
+    <pre id="o-out">${esc(data.output)}</pre>
+    <div class="out-head"><h3>Automatic review</h3></div>
+    ${findingsHtml(data.review)}
+    <div class="out-head"><h3>Filled prompt</h3><button class="small" id="copy">Copy prompt</button></div>
+    <pre id="o-prompt">${esc(data.prompt)}</pre>
+    <p class="hint">Paste this prompt into your chosen language model, then paste its response below to check it.</p>
+    <div class="out-head"><h3>Review a real model output</h3></div>
+    <textarea id="paste" placeholder="Paste the model's response here"></textarea>
+    <div class="actions"><button id="rev">Review output</button></div>
+    <div id="rev-out"></div>`;
+  $("copy").onclick = async () => {
+    try { await navigator.clipboard.writeText(data.prompt); $("copy").textContent = "Copied"; }
+    catch { $("copy").textContent = "Copy failed"; }
+    setTimeout(() => ($("copy").textContent = "Copy prompt"), 1500);
+  };
+  $("rev").onclick = async () => {
+    try {
+      const r = await api("/api/review", { ...form(), output_text: $("paste").value });
+      $("rev-out").innerHTML = findingsHtml(r.review);
+    } catch (e) { $("rev-out").innerHTML = `<div class="err">${esc(e.message)}</div>`; }
+  };
+}
+
+$("gen").onclick = async () => {
+  $("err").textContent = "";
+  $("gen").disabled = true;
+  try { render(await api("/api/generate", form())); }
+  catch (e) { $("err").textContent = e.message; }
+  finally { $("gen").disabled = false; }
+};
+
+$("clear").onclick = () => {
+  $("case").value = "";
+  fillForm(null);
+  $("err").textContent = "";
+  $("result").innerHTML = '<p class="empty">Choose a sample case or enter a forecast, then press Generate.</p>';
+};
+
+$("case").onchange = () => fillForm(cases.find((c) => c.id === $("case").value) || null);
+
+(async () => {
+  try {
+    const d = await api("/api/cases");
+    cases = d.cases;
+    d.audiences.forEach((a) => $("audience").add(new Option(a, a)));
+    cases.forEach((c) => $("case").add(new Option(c.label, c.id)));
+  } catch (e) { $("err").textContent = "Could not load sample cases: " + e.message; }
+})();
+</script>
+</body>
+</html>

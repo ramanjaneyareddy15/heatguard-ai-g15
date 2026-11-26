@@ -1,0 +1,60 @@
+{
+  "_note": "SYNTHETIC test inputs for prompt testing only. These are NOT real forecasts or official warnings.",
+  "cases": [
+    {
+      "id": "case_01",
+      "label": "SYNTHETIC - complete information, general public",
+      "forecast_text": "Daytime maximum temperatures are expected to reach 42 C on three consecutive days. Nights will stay warm with minimums near 29 C.",
+      "location": "Example City (synthetic)",
+      "period": "Days 1 to 3 of the sample period",
+      "warning_level": "Orange (synthetic example)",
+      "audience": "general public",
+      "language": "English",
+      "max_words": 150
+    },
+    {
+      "id": "case_02",
+      "label": "SYNTHETIC - complete information, students",
+      "forecast_text": "A heat wave is expected, with maximum temperatures of 40 C to 43 C during the afternoon hours. Humidity is expected to be low.",
+      "location": "Example Campus Region (synthetic)",
+      "period": "Next 4 days of the sample period",
+      "warning_level": "Yellow (synthetic example)",
+      "audience": "students",
+      "language": "English",
+      "max_words": 120
+    },
+    {
+      "id": "case_03",
+      "label": "SYNTHETIC - missing location and period",
+      "forecast_text": "Very hot conditions are expected, with temperatures above normal for the season.",
+      "location": null,
+      "period": null,
+      "warning_level": null,
+      "audience": "general public",
+      "language": "English",
+      "max_words": 100
+    },
+    {
+      "id": "case_04",
+      "label": "SYNTHETIC - campus staff, warning level missing",
+      "forecast_text": "Maximum temperatures near 41 C are expected on Monday and Tuesday. Outdoor activities in the afternoon may be affected.",
+      "location": "Example University Campus (synthetic)",
+      "period": "Monday and Tuesday of the sample week",
+      "warning_level": null,
+      "audience": "campus staff",
+      "language": "English",
+      "max_words": 130
+    },
+    {
+      "id": "case_05",
+      "label": "SYNTHETIC - uncertain forecast wording",
+      "forecast_text": "Temperatures may reach 39 C to 41 C, but forecasters are uncertain about how long the hot spell will last.",
+      "location": "Example Town (synthetic)",
+      "period": null,
+      "warning_level": "Watch (synthetic example)",
+      "audience": "community communication team",
+      "language": "English",
+      "max_words": 140
+    }
+  ]
+}
